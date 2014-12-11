@@ -1,0 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Functions for computing a dynamical consensus with a linear 
+% consensus protocol and arbitrary network.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function gr = regularize_graph(g)
+function p = protocol(dt, graph)
+function xp = update( L, x)
+function xp = async_update( L, x)
+function xp = noisy_update( L, x, eta)
+function xp = update_leader( L, x, leader)
+function bv = bounded_value( x , xmin , xmax)
+function dphi = disagreement(g , x)
+function phi = consensus_value(x)
+function phi = order_parameter(x)
+function dis = consensus_distance(x, x0)
+function dx = displacement(x)
+function corr = correlation(dx, dists, maxd)

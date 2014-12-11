@@ -1,0 +1,11 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Functions for computing a dynamical consensus with  
+% linear threshold consensus protocol and arbitrary network.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function gr = regularize_graph(g)
+function gr = regularize_graph_autoint(g)
+function xp = update(g, x, th)
+function xp = async_update( g, x, th)
+function xp = noisy_update( g, x, th, eta)
+function xp = update_leader( g, x, th, leaders)

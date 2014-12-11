@@ -1,0 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Functions to generate different kinds of graphs
+% to use for consensus protocols.
+% All the graphs are N x N marices where g(i,j) = 1
+% if 'i' is connected to 'j' and 0 otherwise.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function g = random_undirected_graph(dim, density)
+function g = random_directed_graph(dim, density)
+function g = small_world_graph(dim, k)
+function g = small_world_graph_leaders(dim, k, indxs)
+function [graph distance] = ising_1d_graph(L, k)
+function [graph distance] = ising_1dperiodic_graph(L, k)
+function [graph distance] = ising_2d_graph(Lx, Ly, k)
+function [graph distance] = ising_2dperiodic_graph(Lx, Ly, k)
