@@ -1,7 +1,7 @@
 function corr = ising_correlation(L,k, dt, eta, niter,out)
     addpath('../src/graph_generation/')
     addpath('../src/linear_consensus/')
-    [graph dists] = ising_2dperiodic_graph(L,L,k) ;
+    [graph dists] = regularmesh_2dperiodic_graph(L,L,k) ;
     p = protocol(dt, graph);
     maxd = max(dists) ;
 	corr = zeros(1,maxd) ;

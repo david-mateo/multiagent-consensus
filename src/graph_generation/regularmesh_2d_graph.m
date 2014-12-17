@@ -1,4 +1,4 @@
-function [graph distance] = ising_2d_graph(Lx, Ly, k)
+function [graph distance] = regularmesh_2d_graph(Lx, Ly, k)
     % 2D regular mesh.
     % Lx        = (int) length of the mesh in x-axis.
     % Ly        = (int) length of the mesh in y-axis.

@@ -1,4 +1,4 @@
-function [graph distance] = ising_1d_graph(L, k)
+function [graph distance] = regularmesh_1d_graph(L, k)
     % 1D regular mesh (a chain).
     % L         = (int) length of the mesh, N = L.
     % k         = (int) interaction length. Each

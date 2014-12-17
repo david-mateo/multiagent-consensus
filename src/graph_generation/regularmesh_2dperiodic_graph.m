@@ -1,4 +1,4 @@
-function [graph distance] = ising_2dperiodic_graph(Lx, Ly, k)
+function [graph distance] = regularmesh_2dperiodic_graph(Lx, Ly, k)
     % Same as ising_2d_graph with periodic conditions (a mesh in a torus).
     [ii jj] = meshgrid(0:Lx*Ly-1) ;
     dx = abs(mod(ii,Lx)-mod(jj,Lx)) ;
