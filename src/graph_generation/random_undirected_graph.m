@@ -5,5 +5,5 @@ function g = random_undirected_graph(dim, density)
 	% density   = (float) density of connections, i.e.
 	%             probability of (i,j) to be connected.
 	r = rand(dim) ;
-	g = 0.5*(r + r')>density ;
+	g = 0.5*(r + r')<density ;
 	end

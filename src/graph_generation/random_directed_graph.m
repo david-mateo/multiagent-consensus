@@ -5,5 +5,5 @@ function g = random_directed_graph(dim, density)
 	% density   = (float) density of connections, i.e.
 	%             probability of (i,j) to be connected.
 	r = rand(dim) ;
-	g = r>density ;
+	g = r<density ;
 	end
