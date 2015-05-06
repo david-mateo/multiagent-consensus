@@ -6,9 +6,9 @@ function g = small_world_graph(dim, k)
     % k         = (int) outdegree. Number of edges per node.
 	g = zeros(dim) ;
 	for i=1:dim
-        % WARNING: This works in Matlab and Octave 
-		r = randperm(dim-1)(1:k) ; % k random numbers from 1 to dim-1 wout repetition.
-		neis=(1:dim)(1:dim!=i) ;
+        % temporary storage needed for compatibility with Matlab
+		r = randperm(dim-1) ; r = r(1:k) ; % k random numbers from 1 to dim-1 wout repetition.
+		neis=[1:i-1 i+1:dim] ;
         neis= neis(r) ;
 		g(i,neis) = 1 ;
 		end
