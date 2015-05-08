@@ -4,16 +4,16 @@ function threshold_mean_speed(nag, nleads, kmax , runs, threshold)
     ks = 01:01:kmax ;
     fprintf('# Voter consensus\n# Num agents        %i\n# Num leaders       %i\n# Runs              %i\n',nag, nleads, runs) ;
     for k=ks
-        s = [] ;
+        s = zeros(runs,1) ;
         for r=1:runs
             % Define small world network
             g = small_world_graph(nag, k) ;
             g = regularize_graph(g) ;
             sp = speed_threshold( nag, nleads, g, threshold) ;
-            s = [ s sp] ;
+            s(r) = sp ;
             end
         %x = arrayfun( @(r) polarization_voters( nag, nleads, k) , 1:runs) ;
-        fprintf("%i\t%f\t%f\n",k,mean(s),std(s) ) ;
+        fprintf('%i\t%f\t%f\n',k,mean(s),std(s) ) ;
         end
     end
 
