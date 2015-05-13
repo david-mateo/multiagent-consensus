@@ -7,8 +7,7 @@ function threshold_mean_polarization(nag, nleads, kmax , runs, threshold)
     for k=ks
         x = zeros(runs,1) ;
         for r=1:runs
-            % Define small world network
-            g = small_world_graph(nag, k) ;
+            g = fixed_outdegree_graph(nag, k) ;
             g = regularize_graph(g) ;
             xp = polarization_threshold( nag, nleads, g, threshold) ;
             x(r) = xp ;

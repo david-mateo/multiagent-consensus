@@ -5,7 +5,6 @@ function threshold_random_mean_speed(nag, nleads, dens , runs, threshold)
     for den=dens
         s = zeros(runs,1) ;
         for r=1:runs
-            % Define small world network
             g = random_undirected_graph(nag, den) ;
             g = regularize_graph(g) ;
             sp = speed_threshold( nag, nleads, g, threshold) ;

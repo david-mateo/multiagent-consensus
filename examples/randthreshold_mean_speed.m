@@ -6,8 +6,7 @@ function randthreshold_mean_speed(nag, nleads, kmax , runs, mint, maxt)
     for k=ks
         s = zeros(runs,1) ;
         for r=1:runs
-            % Define small world network
-            g = small_world_graph(nag, k) ;
+            g = fixed_outdegre_graph(nag, k) ;
             g = regularize_graph(g) ;
             sp = speed_threshold( nag, nleads, g, mint, maxt) ;
             s(r) = sp ;

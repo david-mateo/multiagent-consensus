@@ -4,8 +4,7 @@ function xm = threshold_evol( nag, nleads, k, th, niter)
     % Choose random leaders
     leaders = zeros(1,nag) ;
     leaders(randperm(nag)(1:nleads)) = ones(1,nleads) ;
-    % Define small world network
-    g = small_world_graph(nag, k) ;
+    g = fixed_outdegree_graph(nag, k) ;
     g = regularize_graph(g) ;
     % Initial state
     x =zeros(1,nag) ;
