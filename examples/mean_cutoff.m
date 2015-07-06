@@ -6,13 +6,15 @@ pkg load control ;
 
 totnodes = 50 ;
 k  = 2;
-leaders = [ 1 5 ] ;
-nleaders = length(leaders) ;
+is_leader = zeros(1,totnodes) ;
+is_leader(1) = 1 ;
+is_leader(5) = 1 ;
+nleaders = sum(is_leader!=0) ;
 nagents = totnodes-nleaders ;
 g = regularmesh_1dperiodic_graph(totnodes, k) ; 
 g = regularize_graph(g) ;
 
-sys = generate_sys(g, leaders) ;
+sys = generate_sys(g, is_leader) ;
 
 cutoffs = zeros(1,nagents) ;
 for i=1:nagents
