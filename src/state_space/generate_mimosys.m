@@ -1,10 +1,8 @@
-function sys = generate_sys(protocol, is_leader)
-    % Generate a SISO state-space model sys from
+function sys = generate_mimosys(protocol, leaders)
+    % Generate a MIMO state-space model sys from
     % a consensus protocol and a list of leaders.
-    % The output (C and D) is set to zero and
-    % it can be dyanmically changed by
-    %   sys.c = [...]
-    %   sys.d = [...]
+    % The output are the agents themselves
+    % (meaning C=identity and D=0)
     % Requires the control package.
     %
     % Inputs:
@@ -16,13 +14,15 @@ function sys = generate_sys(protocol, is_leader)
     %   values !=1 to introduce a phase in the 
     %   input, e.g. [0 1 0 0 -1 0] for two leaders.
     total_nodes = length(protocol) ;
+    is_leader = false*ones(1,total_nodes) ;
+    is_leader(leaders)=true ;
     is_agent = not(is_leader) ;
     agents = (1:total_nodes)(logical(is_agent)) ;
-    sag = size(agents) ;
+    
 
     A = protocol(agents,agents) ;
-    B = protocol(agents,:)*is_leader' ;
-    C = zeros(sag) ; 
-    D =  0 ; 
+    B = protocol(agents,leaders) ;
+    C = eye(length(agents)) ;
+    D = zeros(size(B)) ; 
     sys = ss(A, B, C, D);
 end
