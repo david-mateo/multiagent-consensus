@@ -17,7 +17,8 @@ function sys = generate_sisosys(protocol, is_leader)
     %   input, e.g. [0 1 0 0 -1 0] for two leaders.
     total_nodes = length(protocol) ;
     is_agent = not(is_leader) ;
-    agents = (1:total_nodes)(logical(is_agent)) ;
+    nodes = 1:total_nodes ;
+    agents = nodes(logical(is_agent)) ;
     sag = size(agents) ;
 
     A = protocol(agents,agents) ;

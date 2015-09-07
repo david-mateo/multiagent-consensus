@@ -17,7 +17,8 @@ function sys = generate_mimosys(protocol, leaders)
     is_leader = false*ones(1,total_nodes) ;
     is_leader(leaders)=true ;
     is_agent = not(is_leader) ;
-    agents = (1:total_nodes)(logical(is_agent)) ;
+    nodes = 1:total_nodes ;
+    agents = nodes(logical(is_agent)) ;
     
 
     A = protocol(agents,agents) ;
