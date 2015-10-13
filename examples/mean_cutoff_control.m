@@ -1,6 +1,8 @@
 addpath('../src/graph_generation/')
 addpath('../src/linear_consensus/')
 addpath('../src/state_space/')
+% if not installed, type "pkg install -forge control"
+pkg load control ;
 
 totnodes = 50 ;
 k  = 2;
@@ -10,8 +12,8 @@ g = regularize_graph(g) ;
 
 % Two independent inputs
 leaders=[1 20] ;
-[A B C D] = generate_mimomatrices(g, leaders) ;
-cutoffs = cutoff(A,B,C,D) ;
+sys = generate_mimosys(g, leaders) ;
+cutoffs = cutoff_sys(sys) ;
 mean_cutoff = mean(cutoffs(:)) ;
 fprintf('Mean cutoff frequency:\t%f\n', mean_cutoff)
 
@@ -19,13 +21,14 @@ fprintf('Mean cutoff frequency:\t%f\n', mean_cutoff)
 is_leader = zeros(1,totnodes) ;
 is_leader(1) = 1 ;
 is_leader(20) = 1 ;
-[A B C D] = generate_sisomatrices(g, is_leader) ;
+sys = generate_sisosys(g, is_leader) ;
 nagents = totnodes - sum(is_leader!=0) ;
 cutoffs = zeros(1,nagents) ;
 for i=1:nagents
     C = zeros(1,nagents) ;
     C(1,i) = 1 ;
-    cutoffs(i) = cutoff(A,B,C,D) ; 
+    sys.c = C ;
+    cutoffs(i) = cutoff_sys(sys) ;
 end
 mean_cutoff = mean(cutoffs(:)) ;
 fprintf('Mean cutoff frequency:\t%f\n', mean_cutoff)

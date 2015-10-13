@@ -1,9 +1,11 @@
-function sys = generate_mimosys(protocol, leaders)
-    % Generate a MIMO state-space model sys from
-    % a consensus protocol and a list of leaders.
-    % The output are the agents themselves
+function [A B C D] = generate_mimomatrices(protocol, leaders)
+    % Generate the matrices corresponding to a
+    % MIMO state-space model from a consensus
+    % protocol and a list of leaders.
+    % The input signal of the system comes
+    % from the list of leaders. The output
+    % signal is the vector of agents themselves.
     % (meaning C=identity and D=0)
-    % Requires the control package.
     %
     % Inputs:
     %   protocol (NxN): lineal dynamical rule,
@@ -20,6 +22,5 @@ function sys = generate_mimosys(protocol, leaders)
     A = protocol(agents,agents) ;
     B = protocol(agents,leaders) ;
     C = eye(length(agents)) ;
-    D = zeros(size(B)) ; 
-    sys = ss(A, B, C, D);
+    D = zeros(length(agents),length(leaders)) ; 
 end
