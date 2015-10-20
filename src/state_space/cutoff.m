@@ -26,13 +26,13 @@ function w = cutoff(A,B,C,D)
         for in=1:nins
             sB = B(:,in) ;
             sD = D(out,in) ;
-            gain0 = abs( (sC / A)*sB + sD )**2 ; % transfer function at w=0
+            gain0 = abs( (sC / A)*sB + sD )^2 ; % transfer function at w=0
             target_gain = gain0/2 ;
             
             % Cutoff frequency estimated through Taylor expansion to feed fzero:
-            w0 = sqrt(0.5*gain0 / (2.*(sC/A*sB+sD)*(sC/A3*sB)-(sC/A2*sB)**2) ) ;
+            w0 = sqrt(0.5*gain0 / (2.*(sC/A*sB+sD)*(sC/A3*sB)-(sC/A2*sB)^2) ) ;
             % objective function = Gamma(w) - 0.5*Gamma(0)
-            objective = @(w) ( abs( (sC /(w*onei-A) )*sB + sD)**2 - target_gain );
+            objective = @(w) ( abs( (sC /(w*onei-A) )*sB + sD)^2 - target_gain );
             w(out,in) = abs( fzero(objective, w0) ) ;
         end
     end
